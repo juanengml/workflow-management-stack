@@ -65,7 +65,7 @@ start-airflow-webserver:
 		-e AIRFLOW__CORE__EXECUTOR=LocalExecutor \
 		-e AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db \
 		-e AIRFLOW__WEBSERVER__WORKERS=2 \
-		apache/airflow:2.7.0 webserver
+		apache/airflow:2.7.0 bash -c "airflow db init && airflow webserver"
 
 start-airflow-scheduler:
 	docker run -d \
